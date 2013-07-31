@@ -10,7 +10,12 @@ def main():
     start_time = time.time()
     
     unpdfer = UnPDFer()
-    (pdftext,pdfhash,tokens,success) = unpdfer.unpdf(filename,SCRUB=True)
+    (pdftext,pdfhash,_tokens,success) = unpdfer.unpdf(filename,SCRUB=True)
+
+    tokens = []
+    for token,frequency in tokens.items():
+        if len(token) > 3:
+            tokens.append((token,frequency))
 
     end_time = time.time()
  
