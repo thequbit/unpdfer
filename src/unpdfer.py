@@ -39,8 +39,8 @@ class UnPDFer:
         text = text.replace("'",'').replace('`','')
         return text
 
-    def unpdf(self,path,SCRUB=False):
-        with open(path,'rb') as fp:
+    def unpdf(self,filename,SCRUB=False):
+        with open(filename,'rb') as fp:
             pdftext,success = self._pdf2text(fp)
             if SCRUB:
                 pdftext = self._scrubtext(pdftext)
