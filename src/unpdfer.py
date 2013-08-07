@@ -44,7 +44,7 @@ class UnPDFer:
             pdftext,success = self._pdf2text(fp)
             if SCRUB:
                 pdftext = self._scrubtext(pdftext)
-            pdfhash = hashlib.md5(pdftext).hexdigest()
+            pdfhash = hashlib.md5(fp.read()).hexdigest()
             _tokens = nltk.word_tokenize(pdftext)
             tokens = nltk.FreqDist(word.lower() for word in _tokens)
         return (pdftext,pdfhash,tokens,success)
