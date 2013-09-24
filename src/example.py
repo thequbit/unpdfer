@@ -13,7 +13,7 @@ def main():
     (pdftext,pdfhash,_tokens,success) = unpdfer.unpdf(filename,SCRUB=True)
 
     tokens = []
-    for token,frequency in tokens.items():
+    for token,frequency in _tokens.items():
         if len(token) > 3:
             tokens.append((token,frequency))
 
