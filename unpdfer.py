@@ -10,13 +10,13 @@ from datetime import datetime
 
 import hashlib
 
-import nltk
+#import nltk
 
 class UnPDFer:
 
     _verbose = False
 
-    def __init__(self,verbose):
+    def __init__(self,verbose=False):
         self._verbose = verbose
 
     def _report(self,text):
@@ -83,7 +83,7 @@ class UnPDFer:
             if SCRUB:
                 pdftext = self._scrubtext(pdftext)
             pdfhash = hashlib.md5(fp.read()).hexdigest()
-            _tokens = nltk.word_tokenize(pdftext)
-            tokens = nltk.FreqDist(word.lower() for word in _tokens)
-        return (created,pdftext,pdfhash,tokens,success)
+            #_tokens = nltk.word_tokenize(pdftext)
+            #tokens = nltk.FreqDist(word.lower() for word in _tokens)
+        return (created,pdftext,pdfhash,success)
 
