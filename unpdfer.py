@@ -10,6 +10,8 @@ from datetime import datetime
 
 import hashlib
 
+import re
+
 #import nltk
 
 class UnPDFer:
