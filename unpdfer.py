@@ -70,17 +70,24 @@ class UnPDFer:
 
     def _scrubtext(self,text):
         text = text.replace(',','').replace('.','').replace('?','')
-        text = text.replace('/',' ').replace(':','').replace(';','')
+        text = text.replace('/','').replace(':','').replace(';','')
         text = text.replace('<','').replace('>','').replace('[','')
         text = text.replace(']','').replace('\\',' ').replace('"','')
         text = text.replace("'",'').replace('`','')
+
+        # this is done 4 times for the situation of ' \n\t \n\t' 
+        for i in range(0,3):
+            text = re.sub(' +',' ',text)
+            text = re.sub('\n+','\n',text)
+            text = re.sub('\t+','\t',text)
+
         return text
 
     def unpdf(self,filename,SCRUB=False):
         self._report("Processing '{0}'".format(filename))
         with open(filename,'rb') as fp:
             created,pdftext,success = self._pdf2text(fp)
-            if SCRUB:
+            if SCRUB == True:
                 pdftext = self._scrubtext(pdftext)
             pdfhash = hashlib.md5(fp.read()).hexdigest()
             #_tokens = nltk.word_tokenize(pdftext)
