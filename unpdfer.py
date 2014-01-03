@@ -85,7 +85,8 @@ class UnPDFer:
 
         return text
 
-    def unpdf(self,filename,SCRUB=False):
+    def unpdf(self,filename,SCRUB=False,verbose=False):
+        self._verbose = verbose
         self._report("Processing '{0}'".format(filename))
         with open(filename,'rb') as fp:
             created,pdftext,success = self._pdf2text(fp)
