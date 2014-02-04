@@ -72,6 +72,8 @@ class UnPDFer:
         return retVal
 
     def _scrubtext(self,text):
+
+        # remove all the 'fancy' chars
         text = text.replace(',','').replace('.','').replace('?','')
         text = text.replace('/','').replace(':','').replace(';','')
         text = text.replace('<','').replace('>','').replace('[','')
@@ -84,6 +86,11 @@ class UnPDFer:
             text = re.sub('\n+','\n',text)
             text = re.sub('\t+','\t',text)
 
+        # this happens way more than you would think ...
+        text = text.replace(' \n','\n')
+        text = text.replace(' \t','\t')
+        text = text.replace(' \r','\r')
+
         return text
 
     def unpdf(self,filename,SCRUB=False,verbose=False):
@@ -92,6 +99,8 @@ class UnPDFer:
         with open(filename,'rb') as fp:
             created,pdftext,success = self._pdf2text(fp)
             if SCRUB == True:
+                # this is done twice because PDF
+                pdftext = self._scrubtext(pdftext)
                 pdftext = self._scrubtext(pdftext)
             pdfhash = hashlib.md5(fp.read()).hexdigest()
             #_tokens = nltk.word_tokenize(pdftext)
