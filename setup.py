@@ -1,9 +1,10 @@
 from setuptools import setup
 
 long_description = \
-'''Yada
+'''
 
-Yada
+A simple wrapper around pdfminer 201105115.
+
 '''
 
 setup(
@@ -17,10 +18,16 @@ setup(
     include_package_data=True,
     platforms='any',
     install_requires=[
-      'pdfminer==20110515'
+      'pdfminer==20110515',
     ],
     long_description=long_description,
-    description='Yada yada yada',
+    description='Converts pdfs to text',
     url='https://github.com/thequbit/unpdfer',
-    classifiers=[],
+    classifiers=[
+      'Development Status :: 4 - Beta',
+      'Environment :: Console',
+      'Intended Audience :: Developers',
+      'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+      'Operating System :: POSIX',
+    ],
 )

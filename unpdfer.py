@@ -12,9 +12,7 @@ import hashlib
 
 import re
 
-#import nltk
-
-class UnPDFer:
+class Unpdfer:
 
     _verbose = False
 
