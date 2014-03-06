@@ -51,16 +51,17 @@ class Unpdfer:
             #
             # as messed up as this is ... CreationDate isn't always the same type as it
             # comes back from the PDFParser, so we need to base it on an instance of a
-            # basestring or not.  I'm starting to dislike PDFs ...
+            # basestring or not.
             #
-            if not isinstance(doc.info[0]['CreationDate'],basestring):
-                datestring = doc.info[0]['CreationDate'].resolve()[2:-7]
-            else:
-                datestring = doc.info[0]['CreationDate'][2:-7]
-            #print "working on '{0}'...".format(datestring)
-            ts = strptime(datestring, "%Y%m%d%H%M%S")
-            created = datetime.fromtimestamp(mktime(ts))
-
+            created = ""
+            try:
+                if not isinstance(doc.info[0]['CreationDate'],basestring):
+                    creatd = doc.info[0]['CreationDate'].resolve()[2:-7]
+                else:
+                    created = doc.info[0]['CreationDate'][2:-7]
+            except:
+                self._report("CreationDate field could not be decoded within PDF, setting to ''")
+                pass
             retVal = (created,txt,True)
             retstr.close()
         except Exception, e:
