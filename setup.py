@@ -9,7 +9,7 @@ A simple wrapper around pdfminer 201105115.
 
 setup(
     name="unpdfer",
-    version="0.0.1",
+    version="0.0.2",
     license="GPL3",
     author="Timothy Duffy",
     author_email="tim@timduffy.me",

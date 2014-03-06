@@ -64,7 +64,7 @@ class Unpdfer:
             retVal = (created,txt,True)
             retstr.close()
         except Exception, e:
-            self._reportstr("Error: \n\t%s" %str(e))
+            self._report("Error: \n\t%s" % str(e))
             retVal = (None,"",False)
             pass
         return retVal
