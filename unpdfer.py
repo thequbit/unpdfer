@@ -62,6 +62,7 @@ class Unpdfer:
             except:
                 self._report("CreationDate field could not be decoded within PDF, setting to ''")
                 pass
+            created = created.encode('ascii','ignore')
             retVal = (created,txt,True)
             retstr.close()
         except Exception, e:
