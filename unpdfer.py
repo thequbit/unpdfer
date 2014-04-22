@@ -78,7 +78,7 @@ class Unpdfer:
         text = text.replace('/','').replace(':','').replace(';','')
         text = text.replace('<','').replace('>','').replace('[','')
         text = text.replace(']','').replace('\\',' ').replace('"','')
-        text = text.replace('[','').replace("'",'').replace('`','')
+        text = text.replace("'",'').replace('`','')
 
         # this is done 4 times for the situation of ' \n\t \n\t' 
         for i in range(0,3):
