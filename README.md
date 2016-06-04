@@ -25,7 +25,7 @@ Setting the verbose flag to True will cause debug output to be printed to the sc
     # set an input filename
     filename = 'myfile.pdf'
     
-    # conver to text
+    # convert to text
     worker = Unpdfer()
     (created,pdftext,pdfhash,success) = worker.unpdf(filename,SCRUB=False,verbose=False)
 
